@@ -13,7 +13,7 @@ If you only want to change the way logs are formatted, look at the `custom_forma
 #[macro_use]
 extern crate log;
 
-use env_logger::filter::{Builder, Filter};
+use env_logger_plus::filter::{Builder, Filter};
 
 use log::{Log, Metadata, Record, SetLoggerError};
 

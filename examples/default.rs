@@ -18,7 +18,7 @@ $ export MY_LOG_STYLE=never
 #[macro_use]
 extern crate log;
 
-use env_logger::Env;
+use env_logger_plus::Env;
 
 fn main() {
     // The `Env` lets us tweak what the environment
@@ -28,7 +28,7 @@ fn main() {
         .filter_or("MY_LOG_LEVEL", "trace")
         .write_style_or("MY_LOG_STYLE", "always");
 
-    env_logger::init_from_env(env);
+    env_logger_plus::init_from_env(env);
 
     trace!("some trace log");
     debug!("some debug log");

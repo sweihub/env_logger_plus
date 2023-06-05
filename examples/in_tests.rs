@@ -19,7 +19,7 @@ fn main() {}
 #[cfg(test)]
 mod tests {
     fn init_logger() {
-        let _ = env_logger::builder()
+        let _ = env_logger_plus::builder()
             // Include all events in tests
             .filter_level(log::LevelFilter::max())
             // Ensure events are captured by `cargo test`

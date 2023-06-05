@@ -15,7 +15,7 @@
 //! ```
 //! use std::io::Write;
 //!
-//! let mut builder = env_logger::Builder::new();
+//! let mut builder = env_logger_plus::Builder::new();
 //!
 //! builder.format(|buf, record| {
 //!     writeln!(buf, "{}: {}",
@@ -86,7 +86,7 @@ impl Default for TimestampPrecision {
 /// ```
 /// use std::io::Write;
 ///
-/// let mut builder = env_logger::Builder::new();
+/// let mut builder = env_logger_plus::Builder::new();
 ///
 /// builder.format(|buf, record| writeln!(buf, "{}: {}", record.level(), record.args()));
 /// ```

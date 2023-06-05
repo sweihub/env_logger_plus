@@ -14,8 +14,8 @@
 //!
 //! ```
 //! extern crate log;
-//! extern crate env_logger;
-//! use env_logger::filter::Filter;
+//! extern crate env_logger_plus;
+//! use env_logger_plus::filter::Filter;
 //! use log::{Log, Metadata, Record};
 //!
 //! struct MyLogger {
@@ -24,7 +24,7 @@
 //!
 //! impl MyLogger {
 //!     fn new() -> MyLogger {
-//!         use env_logger::filter::Builder;
+//!         use env_logger_plus::filter::Builder;
 //!         let mut builder = Builder::new();
 //!
 //!         // Parse a directives string from an environment variable
@@ -94,7 +94,7 @@ pub struct Filter {
 /// ```
 /// # #[macro_use] extern crate log;
 /// # use std::env;
-/// use env_logger::filter::Builder;
+/// use env_logger_plus::filter::Builder;
 ///
 /// let mut builder = Builder::new();
 ///
@@ -127,7 +127,7 @@ impl Filter {
     ///
     /// ```rust
     /// use log::LevelFilter;
-    /// use env_logger::filter::Builder;
+    /// use env_logger_plus::filter::Builder;
     ///
     /// let mut builder = Builder::new();
     /// builder.filter(Some("module1"), LevelFilter::Info);

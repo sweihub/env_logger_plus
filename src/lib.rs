@@ -19,7 +19,7 @@
 //! ```
 //! use log::{debug, error, log_enabled, info, Level};
 //!
-//! env_logger::init();
+//! env_logger_plus::init();
 //!
 //! debug!("this is a debug {}", "message");
 //! error!("this is printed by default");
@@ -188,7 +188,7 @@
 //! #[cfg(test)]
 //! mod tests {
 //!     fn init() {
-//!         let _ = env_logger::builder().is_test(true).try_init();
+//!         let _ = env_logger_plus::builder().is_test(true).try_init();
 //!     }
 //!
 //!     #[test]
@@ -222,7 +222,7 @@
 //! The following example excludes the timestamp from the log output:
 //!
 //! ```
-//! env_logger::builder()
+//! env_logger_plus::builder()
 //!     .format_timestamp(None)
 //!     .init();
 //! ```
@@ -244,7 +244,7 @@
 //! ```
 //! use std::io::Write;
 //!
-//! env_logger::builder()
+//! env_logger_plus::builder()
 //!     .format(|buf, record| {
 //!         writeln!(buf, "{}: {}", record.level(), record.args())
 //!     })
@@ -261,9 +261,9 @@
 //! isn't set:
 //!
 //! ```
-//! use env_logger::Env;
+//! use env_logger_plus::Env;
 //!
-//! env_logger::Builder::from_env(Env::default().default_filter_or("warn")).init();
+//! env_logger_plus::Builder::from_env(Env::default().default_filter_or("warn")).init();
 //! ```
 //!
 //! [gh-repo-examples]: https://github.com/env-logger-rs/env_logger/tree/main/examples
@@ -361,7 +361,7 @@ pub struct Logger {
 /// ```
 /// # #[macro_use] extern crate log;
 /// # use std::io::Write;
-/// use env_logger::Builder;
+/// use env_logger_plus::Builder;
 /// use log::LevelFilter;
 ///
 /// let mut builder = Builder::from_default_env();
@@ -395,7 +395,7 @@ impl Builder {
     ///
     /// ```
     /// use log::LevelFilter;
-    /// use env_logger::{Builder, WriteStyle};
+    /// use env_logger_plus::{Builder, WriteStyle};
     ///
     /// let mut builder = Builder::new();
     ///
@@ -424,7 +424,7 @@ impl Builder {
     /// called `MY_LOG`:
     ///
     /// ```
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     ///
     /// let mut builder = Builder::from_env("MY_LOG");
     /// builder.init();
@@ -434,7 +434,7 @@ impl Builder {
     /// `MY_LOG_STYLE` for whether or not to write styles:
     ///
     /// ```
-    /// use env_logger::{Builder, Env};
+    /// use env_logger_plus::{Builder, Env};
     ///
     /// let env = Env::new().filter("MY_LOG").write_style("MY_LOG_STYLE");
     ///
@@ -462,7 +462,7 @@ impl Builder {
     ///
     /// ```
     /// use log::LevelFilter;
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     ///
     /// let mut builder = Builder::new();
     ///
@@ -477,7 +477,7 @@ impl Builder {
     ///
     /// ```
     /// use log::LevelFilter;
-    /// use env_logger::{Builder, Env};
+    /// use env_logger_plus::{Builder, Env};
     ///
     /// let env = Env::new().filter("MY_LOG").write_style("MY_LOG_STYLE");
     ///
@@ -514,7 +514,7 @@ impl Builder {
     /// Initialise a logger using the default environment variables:
     ///
     /// ```
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     ///
     /// let mut builder = Builder::from_default_env();
     /// builder.init();
@@ -538,7 +538,7 @@ impl Builder {
     ///
     /// ```
     /// use log::LevelFilter;
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     ///
     /// let mut builder = Builder::new();
     /// builder.filter_level(LevelFilter::Off);
@@ -567,7 +567,7 @@ impl Builder {
     ///
     /// ```
     /// use std::io::Write;
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     ///
     /// let mut builder = Builder::new();
     ///
@@ -657,7 +657,7 @@ impl Builder {
     /// Only include messages for info and above for logs in `path::to::module`:
     ///
     /// ```
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     /// use log::LevelFilter;
     ///
     /// let mut builder = Builder::new();
@@ -676,7 +676,7 @@ impl Builder {
     /// Only include messages for info and above for logs globally:
     ///
     /// ```
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     /// use log::LevelFilter;
     ///
     /// let mut builder = Builder::new();
@@ -698,7 +698,7 @@ impl Builder {
     /// Only include messages for info and above for logs in `path::to::module`:
     ///
     /// ```
-    /// use env_logger::Builder;
+    /// use env_logger_plus::Builder;
     /// use log::LevelFilter;
     ///
     /// let mut builder = Builder::new();
@@ -731,7 +731,7 @@ impl Builder {
     /// Write log message to `stdout`:
     ///
     /// ```
-    /// use env_logger::{Builder, Target};
+    /// use env_logger_plus::{Builder, Target};
     ///
     /// let mut builder = Builder::new();
     ///
@@ -752,7 +752,7 @@ impl Builder {
     /// Never attempt to write styles:
     ///
     /// ```
-    /// use env_logger::{Builder, WriteStyle};
+    /// use env_logger_plus::{Builder, WriteStyle};
     ///
     /// let mut builder = Builder::new();
     ///
@@ -845,7 +845,7 @@ impl Logger {
     /// called `MY_LOG`:
     ///
     /// ```
-    /// use env_logger::Logger;
+    /// use env_logger_plus::Logger;
     ///
     /// let logger = Logger::from_env("MY_LOG");
     /// ```
@@ -854,7 +854,7 @@ impl Logger {
     /// `MY_LOG_STYLE` for whether or not to write styles:
     ///
     /// ```
-    /// use env_logger::{Logger, Env};
+    /// use env_logger_plus::{Logger, Env};
     ///
     /// let env = Env::new().filter_or("MY_LOG", "info").write_style_or("MY_LOG_STYLE", "always");
     ///
@@ -878,7 +878,7 @@ impl Logger {
     /// Creates a logger using the default environment variables:
     ///
     /// ```
-    /// use env_logger::Logger;
+    /// use env_logger_plus::Logger;
     ///
     /// let logger = Logger::from_default_env();
     /// ```
@@ -1152,7 +1152,7 @@ pub fn try_init() -> Result<(), SetLoggerError> {
 /// This function will panic if it is called more than once, or if another
 /// library has already initialized a global logger.
 pub fn init() {
-    try_init().expect("env_logger::init should not be called after logger initialized");
+    try_init().expect("env_logger_plus::init should not be called after logger initialized");
 }
 
 /// Attempts to initialize the global logger with an env logger from the given
@@ -1167,12 +1167,12 @@ pub fn init() {
 /// and `MY_LOG_STYLE` for writing colors:
 ///
 /// ```
-/// use env_logger::{Builder, Env};
+/// use env_logger_plus::{Builder, Env};
 ///
 /// # fn run() -> Result<(), Box<dyn ::std::error::Error>> {
 /// let env = Env::new().filter("MY_LOG").write_style("MY_LOG_STYLE");
 ///
-/// env_logger::try_init_from_env(env)?;
+/// env_logger_plus::try_init_from_env(env)?;
 ///
 /// Ok(())
 /// # }
@@ -1204,11 +1204,11 @@ where
 /// and `MY_LOG_STYLE` for writing colors:
 ///
 /// ```
-/// use env_logger::{Builder, Env};
+/// use env_logger_plus::{Builder, Env};
 ///
 /// let env = Env::new().filter("MY_LOG").write_style("MY_LOG_STYLE");
 ///
-/// env_logger::init_from_env(env);
+/// env_logger_plus::init_from_env(env);
 /// ```
 ///
 /// # Panics
@@ -1220,7 +1220,7 @@ where
     E: Into<Env<'a>>,
 {
     try_init_from_env(env)
-        .expect("env_logger::init_from_env should not be called after logger initialized");
+        .expect("env_logger_plus::init_from_env should not be called after logger initialized");
 }
 
 /// Create a new builder with the default environment variables.
@@ -1238,7 +1238,7 @@ pub fn builder() -> Builder {
 /// The builder can be configured before being initialized.
 #[deprecated(
     since = "0.8.0",
-    note = "Prefer `env_logger::Builder::from_env()` instead."
+    note = "Prefer `env_logger_plus::Builder::from_env()` instead."
 )]
 pub fn from_env<'a, E>(env: E) -> Builder
 where
